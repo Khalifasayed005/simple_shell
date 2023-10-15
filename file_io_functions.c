@@ -39,7 +39,7 @@ list_t *node = NULL;
 if (!filename)
 return (-1);
 
-fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
+f = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
 free(filename);
 if (f == -1)
 return (-1);
@@ -85,7 +85,7 @@ buf[fsize] = 0;
 if (rdlen <= 0)
 return (free(buf), 0);
 close(f);
-for (z = 0; z < fsize; i++)
+for (z = 0; z < fsize; z++)
 if (buf[z] == '\n')
 {
 buf[z] = 0;

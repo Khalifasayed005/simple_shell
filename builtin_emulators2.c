@@ -101,7 +101,7 @@ return (0);
 }
 for (i = 1; info->argv[i]; i++)
 {
-p = _strchr(info->argv[i], '=');
+a = _strchr(info->argv[i], '=');
 if (a)
 set_alias(info, info->argv[i]);
 else
