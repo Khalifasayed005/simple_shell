@@ -4,6 +4,7 @@
  * _myexit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
+ * 
  * Return: exits with a given exit status
  * (0) if info.argv[0] != "exit"
  */
@@ -14,12 +15,14 @@ int ex;
 if (info->argv[1])  /* If there is an exit arguement */
 {
 ex = _erratoi(info->argv[1]);
+
 if (ex == -1)
 {
 info->status = 2;
 print_error(info, "Illegal number: ");
 _eputs(info->argv[1]);
 _eputchar('\n');
+
 return (1);
 }
 info->err_num = _erratoi(info->argv[1]);
@@ -46,6 +49,7 @@ _puts("TODO: >>getcwd failure emsg here<<\n");
 if (!info->argv[1])
 {
 dir = _getenv(info, "HOME=");
+
 if (!dir)
 chdir_ret = /* TODO: what should this be? */
 chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
