@@ -1,12 +1,15 @@
 #ifndef SHELL_H
 #define SHELL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -35,19 +38,20 @@
 
 extern char **environ;
 
-
 /**
  * struct liststr - singly linked list
  * @num: the number field
  * @str: a string
  * @next: points to the next node
 */
+
 typedef struct liststr
 {
 	int num;
 	char *str;
 	struct liststr *next;
 } list_t;
+
 
 /**
  * struct passinfo - contains pseudo-arguements to pass into a function,
@@ -71,6 +75,7 @@ typedef struct liststr
  * @readfd: the fd from which to read line input
  * @histcount: the history line number count
 */
+
 typedef struct passinfo
 {
 	char *arg;
@@ -102,6 +107,7 @@ typedef struct passinfo
  * @type: the builtin command flag
  * @func: the function
 */
+
 typedef struct builtin
 {
 	char *type;
@@ -229,5 +235,6 @@ void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
+
 
 #endif
