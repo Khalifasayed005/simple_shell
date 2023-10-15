@@ -10,7 +10,7 @@ char *get_history_file(info_t *in)
 {
 char *buf, *dir;
 
-dir = _getenv(info, "HOME=");
+dir = _getenv(in, "HOME=");
 if (!dir)
 return (NULL);
 buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -43,7 +43,7 @@ f = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
 free(filename);
 if (f == -1)
 return (-1);
-for (node = info->history; node; node = node->next)
+for (node = in->history; node; node = node->next)
 {
 _putsfd(node->str, f);
 _putfd('\n', f);
@@ -93,7 +93,7 @@ build_history_list(in, buf + last, linecount++);
 last = z + 1;
 }
 if (last != z)
-build_history_list(info, buf + last, linecount++);
+build_history_list(in, buf + last, linecount++);
 free(buf);
 in->histcount = linecount;
 while (in->histcount-- >= HIST_MAX)
@@ -128,7 +128,7 @@ return (0);
  * @in: Structure containing potential arguments. Used to maintain
  * Return: the new histcount
  */
-int renumber_history(info_t *info)
+int renumber_history(info_t *in)
 {
 list_t *node = in->history;
 int z = 0;
