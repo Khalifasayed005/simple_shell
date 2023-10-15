@@ -5,7 +5,6 @@
  * @k: pointer to first node
  * Return: size of list
 */
-
 size_t list_len(const list_t *k)
 {
 	size_t i = 0;
@@ -23,7 +22,6 @@ size_t list_len(const list_t *k)
  * @head: pointer to first node
  * Return: array of strings
 */
-
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
