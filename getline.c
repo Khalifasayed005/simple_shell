@@ -7,7 +7,7 @@
  * @len: address of len var
  * Return: bytes read
  */
-ssize_t input_buf(info_t *info, char **buf, size_t *len)
+ssize_t input_buf(info_t *in, char **buf, size_t *len)
 {
 ssize_t c = 0;
 size_t len_p = 0;
@@ -30,7 +30,7 @@ if ((*buf)[c - 1] == '\n')
 (*buf)[c - 1] = '\0'; /* remove trailing newline */
 c--;
 }
-info->linecount_flag = 1;
+in->linecount_flag = 1;
 remove_comments(*buf);
 build_history_list(in, *buf, in->histcount++);
 /* if (_strchr(*buf, ';')) is this a command chain? */

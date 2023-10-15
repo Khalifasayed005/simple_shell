@@ -4,7 +4,7 @@
  * clear_info - initializes info_t struct
  * @in: struct address
  */
-void clear_info(info_t *info)
+void clear_info(info_t *in)
 {
 	in->arg = NULL;
 	in->argv = NULL;
