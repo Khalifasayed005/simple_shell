@@ -7,11 +7,9 @@
  * @p: address of current position in buf
  * Return: 1 if chain delimeter, 0 otherwise
  */
-
 int is_chain(info_t *info, char *buf, size_t *p)
 {
 size_t z = *p;
-
 if (buf[z] == '|' && buf[z + 1] == '|')
 {
 buf[z] = 0;
@@ -20,10 +18,12 @@ info->cmd_buf_type = CMD_OR;
 }
 else if (buf[z] == '&' && buf[z + 1] == '&')
 {
+
 buf[z] = 0;
 z++;
 info->cmd_buf_type = CMD_AND;
 }
+
 else if (buf[z] == ';') /* found end of this command */
 {
 buf[z] = 0; /* replace semicolon with null */
@@ -57,6 +57,7 @@ buf[i] = 0;
 z = len;
 }
 }
+
 if (info->cmd_buf_type == CMD_OR)
 {
 if (!info->status)
@@ -84,10 +85,12 @@ char *p;
 for (a = 0; a < 10; a++)
 {
 node = node_starts_with(info->alias, info->argv[0], '=');
+
 if (!node)
 return (0);
 free(info->argv[0]);
 p = _strchr(node->str, '=');
+
 if (!p)
 return (0);
 p = _strdup(p + 1);
@@ -97,10 +100,10 @@ info->argv[0] = p;
 }
 return (1);
 }
-
 /**
  * replace_vars - replaces vars in the tokenized string
  * @info: the parameter struct
+ *
  * Return: 1 if replaced, 0 otherwise
  */
 
@@ -127,6 +130,7 @@ _strdup(convert_number(getpid(), 10, 0)));
 continue;
 }
 node = node_starts_with(info->env, &info->argv[a][1], '=');
+
 if (node)
 {
 replace_string(&(info->argv[a]),
